@@ -7,6 +7,11 @@
     /* { no: 1, date: "2026-11", title: { en: "Title", fr: "Titre" }, summary: { en: "...", fr: "..." }, url: "https://..." } */
   ];
 
+  document.querySelectorAll(".page").forEach(function (p) {
+    Array.prototype.filter.call(p.children, function (c) { return c.classList.contains("section"); })
+      .forEach(function (s, i) { if (i % 2 === 0) s.classList.add("sand"); });
+  });
+
   var root = document.documentElement;
   var pages = ["home", "about", "services", "newsletter", "contact", "legal"];
   var lang = "en";

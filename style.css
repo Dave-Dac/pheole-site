@@ -1,12 +1,4 @@
-/* PHEOLE website styles */
-@font-face { font-family: "Lexend"; font-style: normal; font-weight: 400; font-display: swap; src: url("lexend-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Lexend"; font-style: normal; font-weight: 500; font-display: swap; src: url("lexend-latin-500-normal.woff2") format("woff2"); }
-@font-face { font-family: "Lexend"; font-style: normal; font-weight: 600; font-display: swap; src: url("lexend-latin-600-normal.woff2") format("woff2"); }
-@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 400; font-display: swap; src: url("source-sans-3-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "Source Sans 3"; font-style: normal; font-weight: 600; font-display: swap; src: url("source-sans-3-latin-600-normal.woff2") format("woff2"); }
-@font-face { font-family: "Source Sans 3"; font-style: italic; font-weight: 400; font-display: swap; src: url("source-sans-3-latin-400-italic.woff2") format("woff2"); }
-@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 400; font-display: swap; src: url("ibm-plex-mono-latin-400-normal.woff2") format("woff2"); }
-@font-face { font-family: "IBM Plex Mono"; font-style: normal; font-weight: 500; font-display: swap; src: url("ibm-plex-mono-latin-500-normal.woff2") format("woff2"); }
+/* PHEOLE website styles. System font, sand background, navy and celadon */
 *,*::before,*::after{box-sizing:border-box}
 html{color-scheme:light;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
 body{margin:0}
@@ -14,9 +6,9 @@ img{max-width:100%}
 [hidden]{display:none!important}
 /* Layout: left-aligned grid, max 1120px, one open hero carrying the brain-and-book mark, quiet sections below separated by space rather than boxes */
 :root {
-  --bg: #ffffff;
-  --surface: #f3f5f8;
-  --line: #e1e6ed;
+  --bg: #f7f3ec;
+  --surface: #efe7da;
+  --line: #e3dacb;
   --fg: #15233a;
   --muted: #56627a;
   --brand: #14284b;
@@ -29,17 +21,20 @@ img{max-width:100%}
   --danger: #a63a2e;
   --show-light: block;
   --show-dark: none;
-  --hero-a: #14284b;
-  --hero-b: #1d3a66;
+  --hero-a: #25467a;
+  --hero-b: #3a5f94;
   --tint-1: #eaf3ee;
   --tint-2: #e9eef5;
   --tint-3: #f6f1e8;
   --tint-4: #f1f3f6;
   --card-ink: #15233a;
   --chip-bg: #ffffff;
-  --font-display: "Lexend", "Segoe UI", system-ui, sans-serif;
-  --font-body: "Source Sans 3", "Segoe UI", system-ui, sans-serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --sand: #f1ebe0;
+  --card: #ffffff;
+  --card-line: #ebe3d6;
+  --font-display: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
+  --font-mono: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", "Helvetica Neue", "Segoe UI", Arial, sans-serif;
   --step--1: 0.875rem;
   --step-0: 1.0625rem;
   --step-1: 1.25rem;
@@ -51,9 +46,9 @@ img{max-width:100%}
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #0d1626;
-    --surface: #142038;
-    --line: #22314d;
+    --bg: #121518;
+    --surface: #1a1f24;
+    --line: #283039;
     --fg: #e8edf5;
     --muted: #a4b0c4;
     --brand: #b9c9e2;
@@ -66,21 +61,24 @@ img{max-width:100%}
     --danger: #f08b7e;
     --show-light: none;
     --show-dark: block;
-    --hero-a: #16294a;
-    --hero-b: #1f3a66;
+    --hero-a: #1f3a66;
+    --hero-b: #2d4f82;
     --tint-1: #172a24;
     --tint-2: #17223a;
     --tint-3: #262219;
     --tint-4: #1a2233;
     --card-ink: #e8edf5;
-    --chip-bg: #0d1626;
+    --chip-bg: #121518;
+    --sand: #191d21;
+    --card: #1c2126;
+    --card-line: #283039;
     color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
-  --bg: #0d1626;
-  --surface: #142038;
-  --line: #22314d;
+  --bg: #121518;
+  --surface: #1a1f24;
+  --line: #283039;
   --fg: #e8edf5;
   --muted: #a4b0c4;
   --brand: #b9c9e2;
@@ -93,14 +91,17 @@ img{max-width:100%}
   --danger: #f08b7e;
   --show-light: none;
   --show-dark: block;
-  --hero-a: #16294a;
-  --hero-b: #1f3a66;
+  --hero-a: #1f3a66;
+  --hero-b: #2d4f82;
   --tint-1: #172a24;
   --tint-2: #17223a;
   --tint-3: #262219;
   --tint-4: #1a2233;
   --card-ink: #e8edf5;
-  --chip-bg: #0d1626;
+  --chip-bg: #121518;
+  --sand: #191d21;
+  --card: #1c2126;
+  --card-line: #283039;
   color-scheme: dark;
 }
 
@@ -460,3 +461,39 @@ img.logo-d { display: var(--show-dark); }
 .pillars-4 .pillar.wide .dot { display: none; }
 @media (max-width: 560px) { .pillars-4 .pillar.wide { grid-template-columns: 1fr; } }
 .svc:nth-child(5) { background: var(--tint-2); }
+/* Redesign October 2026: Apple style typography, sand backgrounds in waves, white cards */
+body { font-size: 1.0625rem; letter-spacing: -0.003em; }
+h1 { font-weight: 700; letter-spacing: -0.025em; }
+h2 { font-weight: 600; letter-spacing: -0.018em; }
+h3 { font-weight: 600; letter-spacing: -0.01em; }
+.eyebrow, .svc .for, .topics .tag, .timeline .yr, .issue .no { font-weight: 600; letter-spacing: 0.06em; }
+.cred .k { font-weight: 600; letter-spacing: -0.015em; }
+.quote { font-weight: 500; letter-spacing: -0.01em; }
+.btn { font-weight: 600; border-radius: 980px; padding: 11px 22px; }
+.wordmark { font-family: var(--font-display); font-weight: 600; font-size: 1.6rem; letter-spacing: -0.025em; line-height: 1; color: var(--brand-ink); }
+.wordmark .o { color: var(--accent); }
+.brand .mark { height: 38px; }
+.brand .word-block { gap: 5px; }
+.brand .tag { font-family: var(--font-body); }
+.foot-wordmark { font-size: 1.45rem; }
+.site-header { background: color-mix(in srgb, var(--bg) 88%, transparent); }
+.section + .section { border-top: 0; }
+main { overflow-x: clip; }
+.section.sand { position: relative; }
+.section.sand::before { content: ""; position: absolute; z-index: -1; top: -34px; bottom: -34px; left: 50%; width: 100vw; transform: translateX(-50%); background: var(--sand); -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 36' preserveAspectRatio='none'%3E%3Cpath d='M0 18C240 0 480 0 720 18S1200 36 1440 18V36H0Z'/%3E%3C/svg%3E") top / 100% 36px no-repeat, linear-gradient(#000, #000) center / 100% calc(100% - 70px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 36' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V18C1200 36 960 36 720 18S240 0 0 18Z'/%3E%3C/svg%3E") bottom / 100% 36px no-repeat; mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 36' preserveAspectRatio='none'%3E%3Cpath d='M0 18C240 0 480 0 720 18S1200 36 1440 18V36H0Z'/%3E%3C/svg%3E") top / 100% 36px no-repeat, linear-gradient(#000, #000) center / 100% calc(100% - 70px) no-repeat, url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 36' preserveAspectRatio='none'%3E%3Cpath d='M0 0H1440V18C1200 36 960 36 720 18S240 0 0 18Z'/%3E%3C/svg%3E") bottom / 100% 36px no-repeat; }
+.pillars-4 .pillar, .pillars-4 .pillar:nth-child(n), .pillars-4 .pillar.wide, .svc, .svc:nth-child(n), .culture-grid .c, .band, .form, .issue, .crow { background: var(--card); border: 1px solid var(--card-line); box-shadow: 0 1px 2px rgba(20, 40, 75, 0.04), 0 10px 28px rgba(20, 40, 75, 0.05); }
+.svc:last-child { border-bottom: 1px solid var(--card-line); }
+.issue, .crow { border-radius: 14px; padding-inline: 18px; margin-bottom: 10px; }
+.contact-list .crow:last-child { border-bottom: 1px solid var(--card-line); }
+.pillars-4 .ic, .svc .ic { --ic-bg: var(--tint-1); }
+.svc:nth-child(2) .ic, .pillars-4 .pillar:nth-child(2) .ic { --ic-bg: var(--tint-2); }
+.svc:nth-child(3) .ic, .pillars-4 .pillar:nth-child(3) .ic { --ic-bg: var(--tint-3); }
+.svc:nth-child(4) .ic, .pillars-4 .pillar:nth-child(4) .ic { --ic-bg: var(--tint-4); }
+.svc:nth-child(5) .ic, .pillars-4 .pillar.wide .ic { --ic-bg: var(--tint-2); }
+.culture-grid .c { border-color: var(--card-line); }
+.creds { border-color: var(--line); }
+
+/* Home banner: softer navy, floating card with 4 rounded corners */
+.hero { border-radius: 28px; margin-top: clamp(12px, 2vw, 20px); width: min(1120px, calc(100% - 2 * clamp(12px, 2vw, 20px))); }
+.hero .lede { color: #dde6f2; }
+@media (max-width: 720px) { .hero { border-radius: 22px; } }
