@@ -1,6 +1,7 @@
 (function () {
   /* Paste the form action URL from Brevo (Contacts > Forms > Share > HTML code) to activate signups. */
-  var BREVO_FORM_URL = "";
+  var BREVO_FORM_URL = "https://253f151a.sibforms.com/serve/MUIFABXzD-B7kNbgUkeVGRwOWKZ83fWfd0_VfhhvlHX4y0awDB5fXIeu_I4_7jzA1t9iIU8yvd6QqiJxPyUXRXfGJuU10Bjm8O5hWZYJExhXVLzF4Ug7_M8aMip5C48N5J825UW7n3lHmQxx4KdmzvUHg8fk4_tAY4Re4WH9gghQYzBP-I6HJrcfs4j5vtqvATnDVVS6ZXMJ8ns1Ig==";
+  var BREVO_DOUBLE_OPTIN = false;
 
   /* Add each published issue here, newest first. */
   var ISSUES = [
@@ -28,8 +29,6 @@
     document.querySelectorAll("[data-ph-en]").forEach(function (el) {
       el.setAttribute("placeholder", el.getAttribute("data-ph-" + lang));
     });
-    var r = document.getElementById("nl-lang-" + lang);
-    if (r && !document.getElementById("nl-form").dataset.touched) r.checked = true;
     renderIssues();
     store("pheole-lang", lang);
   }
@@ -105,7 +104,6 @@
   }
 
   var form = document.getElementById("nl-form");
-  form.addEventListener("change", function (e) { if (e.target.name === "LANGUE") form.dataset.touched = "1"; });
   form.addEventListener("submit", function (e) {
     e.preventDefault();
     var err = document.getElementById("nl-err");
@@ -134,12 +132,16 @@
     }
     var btn = document.getElementById("nl-submit");
     btn.disabled = true;
-    fetch(BREVO_FORM_URL, { method: "POST", mode: "no-cors", body: new FormData(form) })
+    var fd = new FormData(form);
+    fd.append("email_address_check", "");
+    fd.append("locale", lang === "fr" ? "fr" : "en");
+    fd.append("html_type", "simple");
+    fetch(BREVO_FORM_URL, { method: "POST", mode: "no-cors", body: new URLSearchParams(fd) })
       .then(function () {
         status.className = "status ok";
-        status.textContent = lang === "fr"
-          ? "Merci. Consultez votre boîte de réception pour confirmer votre inscription."
-          : "Thank you. Check your inbox to confirm your subscription.";
+        status.textContent = BREVO_DOUBLE_OPTIN
+          ? (lang === "fr" ? "Merci. Consultez votre boîte de réception pour confirmer votre inscription." : "Thank you. Check your inbox to confirm your subscription.")
+          : (lang === "fr" ? "Merci, votre inscription est enregistrée." : "Thank you, your subscription is registered.");
         status.hidden = false;
         form.reset();
       })
