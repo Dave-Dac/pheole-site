@@ -497,3 +497,9 @@ main { overflow-x: clip; }
 .hero { border-radius: 28px; margin-top: clamp(12px, 2vw, 20px); width: min(1120px, calc(100% - 2 * clamp(12px, 2vw, 20px))); }
 .hero .lede { color: #dde6f2; }
 @media (max-width: 720px) { .hero { border-radius: 22px; } }
+
+/* Contact email as a link */
+.crow { grid-template-columns: 8rem minmax(0, 1fr); }
+.crow .val-link { color: var(--brand-ink); text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 4px; user-select: auto; }
+.crow .val-link:hover { color: var(--accent); }
+@media (max-width: 560px) { .crow { grid-template-columns: 1fr; } }
